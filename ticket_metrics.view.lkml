@@ -1,4 +1,4 @@
-view: zd_ticket_metrics {
+view: ticket_metrics {
   sql_table_name: public.zd_ticket_metrics ;;
 
   dimension: blendo_imported_at {

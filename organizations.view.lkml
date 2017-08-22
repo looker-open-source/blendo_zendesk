@@ -1,4 +1,4 @@
-view: zd_organizations {
+view: organizations {
   sql_table_name: public.zd_organizations ;;
 
   dimension: id {

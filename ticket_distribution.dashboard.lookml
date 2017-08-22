@@ -1,20 +1,17 @@
-- dashboard: Agent Dashboard
-  title: Blendo Zendesk
-  layout: tile
-  tile_size: 100
-
-  filters:
-
+- dashboard: ticket
+  title: Ticket Distribution
+  layout: newspaper
   elements:
-
-  - name: add_a_unique_name_1501245521
+  - name: Submission per Method
     title: Submission per Method
-    width: 9
     model: blendo_zendesk
     explore: overview_tickets
     type: looker_pie
-    fields: [overview_tickets.via_channel, overview_tickets.count]
-    sorts: [overview_tickets.count desc]
+    fields:
+    - overview_tickets.via_channel
+    - overview_tickets.count
+    sorts:
+    - overview_tickets.count desc
     limit: 500
     column_limit: 50
     value_labels: legend
@@ -42,15 +39,20 @@
     show_silhouette: false
     totals_color: "#808080"
     series_types: {}
-
-  - name: add_a_unique_name_1501495408
+    row: 0
+    col: 0
+    width: 12
+    height: 9
+  - name: Submissions per Organization
     title: Submissions per Organization
-    width: 9
     model: blendo_zendesk
     explore: overview_tickets
     type: looker_pie
-    fields: [zd_organizations.name, overview_tickets.count]
-    sorts: [overview_tickets.count desc]
+    fields:
+    - organizations.name
+    - overview_tickets.count
+    sorts:
+    - overview_tickets.count desc
     limit: 500
     column_limit: 50
     value_labels: legend
@@ -78,14 +80,20 @@
     show_silhouette: false
     totals_color: "#808080"
     series_types: {}
-
-  - name: add_a_unique_name_1501245976
+    row: 0
+    col: 12
+    width: 12
+    height: 9
+  - name: Satisfaction Scores
     title: Satisfaction Scores
     model: blendo_zendesk
     explore: overview_tickets
     type: looker_pie
-    fields: [overview_tickets.count, overview_tickets.satisfaction_rating_score]
-    sorts: [overview_tickets.count desc]
+    fields:
+    - overview_tickets.count
+    - overview_tickets.satisfaction_rating_score
+    sorts:
+    - overview_tickets.count desc
     limit: 500
     column_limit: 50
     value_labels: legend
@@ -116,17 +124,26 @@
     ordering: none
     show_null_labels: false
     series_types: {}
-
-  - name: add_a_unique_name_1501247337
+    row: 9
+    col: 0
+    width: 12
+    height: 8
+  - name: Satisfaction Score Over Time
     title: Satisfaction Score Over Time
     model: blendo_zendesk
     explore: overview_tickets
     type: looker_line
-    fields: [overview_tickets.satisfaction_rating_score, overview_tickets.created_date,
-      overview_tickets.count]
-    pivots: [overview_tickets.satisfaction_rating_score]
-    fill_fields: [overview_tickets.created_date]
-    sorts: [overview_tickets.created_date desc, overview_tickets.satisfaction_rating_score]
+    fields:
+    - overview_tickets.satisfaction_rating_score
+    - overview_tickets.created_date
+    - overview_tickets.count
+    pivots:
+    - overview_tickets.satisfaction_rating_score
+    fill_fields:
+    - overview_tickets.created_date
+    sorts:
+    - overview_tickets.created_date desc
+    - overview_tickets.satisfaction_rating_score
     limit: 500
     column_limit: 50
     stacking: ''
@@ -158,16 +175,25 @@
     ordering: none
     show_null_labels: false
     series_types: {}
-
-  - name: add_a_unique_name_1501492911
+    row: 9
+    col: 12
+    width: 12
+    height: 8
+  - name: Satisfaction Score per Agent
     title: Satisfaction Score per Agent
     model: blendo_zendesk
     explore: overview_tickets
     type: looker_bar
-    fields: [overview_tickets.satisfaction_rating_score, overview_tickets.count, zd_users.email]
-    pivots: [zd_users.email]
-    sorts: [overview_tickets.satisfaction_rating_score, overview_tickets.count desc
-        0, zd_users.email]
+    fields:
+    - overview_tickets.satisfaction_rating_score
+    - overview_tickets.count
+    - users.email
+    pivots:
+    - users.email
+    sorts:
+    - overview_tickets.satisfaction_rating_score
+    - overview_tickets.count desc 0
+    - users.email
     limit: 500
     column_limit: 50
     stacking: ''
@@ -199,18 +225,22 @@
     label_type: labPer
     interpolation: linear
     series_types: {}
-
-
-  - name: add_a_unique_name_1501495015
-    width: 9
+    row: 17
+    col: 0
+    width: 12
+    height: 8
+  - name: Ticket Distribution By Group
     title: Ticket Distribution By Group
     model: blendo_zendesk
     explore: overview_tickets
     type: looker_bar
-    fields: [overview_tickets.count, zd_groups.name]
+    fields:
+    - overview_tickets.count
+    - groups.name
     filters:
-      zd_groups.name: "-NULL"
-    sorts: [overview_tickets.count desc]
+      groups.name: "-NULL"
+    sorts:
+    - overview_tickets.count desc
     limit: 500
     column_limit: 50
     stacking: ''
@@ -245,18 +275,23 @@
     comparison_reverse_colors: false
     show_comparison_label: true
     series_types: {}
-
-
-  - name: add_a_unique_name_1501494804
-    width: 9
+    row: 17
+    col: 12
+    width: 12
+    height: 8
+  - name: Median Group Performance
     title: Median Group Performance
     model: blendo_zendesk
     explore: overview_tickets
     type: looker_column
-    fields: [zd_ticket_metrics.median_reply_time, zd_ticket_metrics.median_first_resolution,
-      zd_ticket_metrics.median_full_resolution, zd_ticket_metrics.median_requester_wait_time,
-      zd_groups.name]
-    sorts: [zd_ticket_metrics.median_reply_time desc]
+    fields:
+    - ticket_metrics.median_reply_time
+    - ticket_metrics.median_first_resolution
+    - ticket_metrics.median_full_resolution
+    - ticket_metrics.median_requester_wait_time
+    - groups.name
+    sorts:
+    - zd_ticket_metrics.median_reply_time desc
     limit: 500
     column_limit: 50
     stacking: ''
@@ -298,15 +333,20 @@
     label_type: labPer
     series_types: {}
     x_axis_reversed: true
-
-  - name: add_a_unique_name_1501494654
-    width: 9
+    row: 25
+    col: 0
+    width: 12
+    height: 9
+  - name: Ticket Distribution by Agent
     title: Ticket Distribution by Agent
     model: blendo_zendesk
     explore: overview_tickets
     type: looker_bar
-    fields: [overview_tickets.count, zd_users.name]
-    sorts: [overview_tickets.count desc]
+    fields:
+    - overview_tickets.count
+    - users.name
+    sorts:
+    - overview_tickets.count desc
     limit: 500
     column_limit: 50
     stacking: ''
@@ -334,16 +374,23 @@
     value_labels: legend
     label_type: labPer
     series_types: {}
-
-  - name: add_a_unique_name_1501493918
-    width: 9
+    row: 25
+    col: 12
+    width: 12
+    height: 9
+  - name: Median Agent Performance
     title: Median Agent Performance
     model: blendo_zendesk
     explore: overview_tickets
     type: looker_column
-    fields: [zd_ticket_metrics.median_reply_time, zd_ticket_metrics.median_first_resolution,
-      zd_users.name, zd_ticket_metrics.median_full_resolution, zd_ticket_metrics.median_requester_wait_time]
-    sorts: [zd_ticket_metrics.median_reply_time desc]
+    fields:
+    - ticket_metrics.median_reply_time
+    - ticket_metrics.median_first_resolution
+    - users.name
+    - ticket_metrics.median_full_resolution
+    - ticket_metrics.median_requester_wait_time
+    sorts:
+    - ticket_metrics.median_reply_time desc
     limit: 500
     column_limit: 50
     stacking: ''
@@ -385,3 +432,7 @@
     label_type: labPer
     series_types: {}
     x_axis_reversed: true
+    row: 34
+    col: 6
+    width: 12
+    height: 8

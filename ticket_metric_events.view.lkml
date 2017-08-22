@@ -1,4 +1,4 @@
-view: zd_ticket_metric_events {
+view: ticket_metric_events {
   sql_table_name: public.zd_ticket_metric_events ;;
 
   dimension: id {

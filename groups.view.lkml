@@ -1,4 +1,4 @@
-view: zd_groups {
+view: groups {
   sql_table_name: public.zd_groups ;;
 
   dimension: id {

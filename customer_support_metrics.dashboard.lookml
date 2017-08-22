@@ -1,19 +1,14 @@
-- dashboard: customer_support_metrics
+- dashboard: customer_support
   title: Customer Support
-  layout: tile
-  tile_size: 100
-
-  filters:
-
+  layout: newspaper
   elements:
-  - name: add_a_unique_name_1501243669
-    height: 2
-    width: 4
+  - name: Backlogged Tickets
     title: Backlogged Tickets
     model: blendo_zendesk
     explore: overview_tickets
     type: single_value
-    fields: [overview_tickets.backlog]
+    fields:
+    - overview_tickets.backlog
     limit: 500
     column_limit: 50
     custom_color_enabled: false
@@ -46,15 +41,17 @@
     show_silhouette: false
     totals_color: "#808080"
     series_types: {}
-
-  - name: add_a_unique_name_1501243718
-    height: 2
-    width: 4
-    title: Closed Tickets
+    row: 0
+    col: 0
+    width: 6
+    height: 5
+  - name: Closed Tickets Copy
+    title: Closed Tickets Copy
     model: blendo_zendesk
     explore: overview_tickets
     type: single_value
-    fields: [overview_tickets.closed]
+    fields:
+    - overview_tickets.closed
     limit: 500
     column_limit: 50
     custom_color_enabled: false
@@ -87,15 +84,17 @@
     show_silhouette: false
     totals_color: "#808080"
     series_types: {}
-
-  - name: add_a_unique_name_1501243759
-    height: 2
-    width: 4
-    title: New Tickets
+    row: 0
+    col: 6
+    width: 6
+    height: 5
+  - name: New Tickets Copy 5
+    title: New Tickets Copy 5
     model: blendo_zendesk
     explore: overview_tickets
     type: single_value
-    fields: [overview_tickets.new]
+    fields:
+    - overview_tickets.new
     limit: 500
     column_limit: 50
     custom_color_enabled: false
@@ -128,15 +127,17 @@
     show_silhouette: false
     totals_color: "#808080"
     series_types: {}
-
-  - name: add_a_unique_name_1501243802
-    height: 2
-    width: 4
-    title: Open Tickets
+    row: 0
+    col: 12
+    width: 6
+    height: 5
+  - name: Open Tickets Copy 2
+    title: Open Tickets Copy 2
     model: blendo_zendesk
     explore: overview_tickets
     type: single_value
-    fields: [overview_tickets.open]
+    fields:
+    - overview_tickets.open
     limit: 500
     column_limit: 50
     custom_color_enabled: false
@@ -169,16 +170,23 @@
     show_silhouette: false
     totals_color: "#808080"
     series_types: {}
-
-  - name: add_a_unique_name_1501489464
+    row: 0
+    col: 18
+    width: 6
+    height: 5
+  - name: Ticket Creation and Resolution
     title: Ticket Creation and Resolution
-    width: 16
     model: blendo_zendesk
     explore: overview_tickets
     type: looker_area
-    fields: [overview_tickets.created_date, overview_tickets.closed, overview_tickets.count]
-    fill_fields: [overview_tickets.created_date]
-    sorts: [overview_tickets.created_date desc]
+    fields:
+    - overview_tickets.created_date
+    - overview_tickets.closed
+    - overview_tickets.count
+    fill_fields:
+    - overview_tickets.created_date
+    sorts:
+    - overview_tickets.created_date desc
     limit: 500
     column_limit: 50
     stacking: ''
@@ -209,16 +217,22 @@
     ordering: none
     show_null_labels: false
     series_types: {}
-
-  - name: add_a_unique_name_1501490255
+    row: 5
+    col: 0
+    width: 12
+    height: 8
+  - name: Busy Days
     title: Busy Days
-    width: 8
     model: blendo_zendesk
     explore: overview_tickets
     type: looker_column
-    fields: [overview_tickets.count, overview_tickets.created_day_of_week]
-    fill_fields: [overview_tickets.created_day_of_week]
-    sorts: [overview_tickets.created_day_of_week]
+    fields:
+    - overview_tickets.count
+    - overview_tickets.created_day_of_week
+    fill_fields:
+    - overview_tickets.created_day_of_week
+    sorts:
+    - overview_tickets.created_day_of_week
     limit: 500
     column_limit: 50
     stacking: ''
@@ -243,16 +257,22 @@
     show_totals_labels: false
     show_silhouette: false
     totals_color: "#808080"
-
-  - name: add_a_unique_name_1501490425
+    row: 5
+    col: 12
+    width: 12
+    height: 8
+  - name: Busy Hours
     title: Busy Hours
-    width: 8
     model: blendo_zendesk
     explore: overview_tickets
     type: looker_area
-    fields: [overview_tickets.count, overview_tickets.created_hour_of_day]
-    fill_fields: [overview_tickets.created_hour_of_day]
-    sorts: [overview_tickets.count desc]
+    fields:
+    - overview_tickets.count
+    - overview_tickets.created_hour_of_day
+    fill_fields:
+    - overview_tickets.created_hour_of_day
+    sorts:
+    - overview_tickets.count desc
     limit: 500
     column_limit: 50
     stacking: ''
@@ -281,17 +301,24 @@
     ordering: none
     show_null_labels: false
     series_types: {}
-
-  - name: add_a_unique_name_1501494197
-    width: 8
+    row: 13
+    col: 0
+    width: 12
+    height: 8
+  - name: First Time Resolution in Minutes
     title: First Time Resolution in Minutes
     model: blendo_zendesk
     explore: overview_tickets
     type: looker_line
-    fields: [overview_tickets.created_date, zd_ticket_metrics.max_first_resolution,
-      zd_ticket_metrics.median_first_resolution, zd_ticket_metrics.min_first_resolution]
-    fill_fields: [overview_tickets.created_date]
-    sorts: [overview_tickets.created_date desc]
+    fields:
+    - overview_tickets.created_date
+    - ticket_metrics.max_first_resolution
+    - ticket_metrics.median_first_resolution
+    - ticket_metrics.min_first_resolution
+    fill_fields:
+    - overview_tickets.created_date
+    sorts:
+    - overview_tickets.created_date desc
     limit: 500
     column_limit: 50
     stacking: ''
@@ -320,17 +347,24 @@
     show_silhouette: false
     totals_color: "#808080"
     series_types: {}
-
-  - name: add_a_unique_name_1501494289
-    width: 8
+    row: 13
+    col: 12
+    width: 12
+    height: 8
+  - name: Full Time Resolution in Minutes
     title: Full Time Resolution in Minutes
     model: blendo_zendesk
     explore: overview_tickets
     type: looker_line
-    fields: [overview_tickets.created_date, zd_ticket_metrics.max_full_resolution, zd_ticket_metrics.median_full_resolution,
-      zd_ticket_metrics.min_full_resolution]
-    fill_fields: [overview_tickets.created_date]
-    sorts: [overview_tickets.created_date desc]
+    fields:
+    - overview_tickets.created_date
+    - ticket_metrics.max_full_resolution
+    - ticket_metrics.median_full_resolution
+    - ticket_metrics.min_full_resolution
+    fill_fields:
+    - overview_tickets.created_date
+    sorts:
+    - overview_tickets.created_date desc
     limit: 500
     column_limit: 50
     stacking: ''
@@ -359,18 +393,24 @@
     show_silhouette: false
     totals_color: "#808080"
     series_types: {}
-
-
-  - name: add_a_unique_name_1501494335
-    width: 8
+    row: 21
+    col: 0
+    width: 12
+    height: 8
+  - name: Reply Time in Minutes
     title: Reply Time in Minutes
     model: blendo_zendesk
     explore: overview_tickets
     type: looker_line
-    fields: [overview_tickets.created_date, zd_ticket_metrics.max_reply_time, zd_ticket_metrics.median_reply_time,
-      zd_ticket_metrics.min_reply_time]
-    fill_fields: [overview_tickets.created_date]
-    sorts: [overview_tickets.created_date desc]
+    fields:
+    - overview_tickets.created_date
+    - ticket_metrics.max_reply_time
+    - ticket_metrics.median_reply_time
+    - ticket_metrics.min_reply_time
+    fill_fields:
+    - overview_tickets.created_date
+    sorts:
+    - overview_tickets.created_date desc
     limit: 500
     column_limit: 50
     stacking: ''
@@ -399,17 +439,24 @@
     show_silhouette: false
     totals_color: "#808080"
     series_types: {}
-
-  - name: add_a_unique_name_1501494410
-    width: 8
+    row: 21
+    col: 12
+    width: 12
+    height: 8
+  - name: Requester Wait Time
     title: Requester Wait Time
     model: blendo_zendesk
     explore: overview_tickets
     type: looker_line
-    fields: [overview_tickets.created_date, zd_ticket_metrics.max_requester_wait_time,
-      zd_ticket_metrics.median_requester_wait_time, zd_ticket_metrics.min_requester_wait_time]
-    fill_fields: [overview_tickets.created_date]
-    sorts: [overview_tickets.created_date desc]
+    fields:
+    - overview_tickets.created_date
+    - ticket_metrics.max_requester_wait_time
+    - ticket_metrics.median_requester_wait_time
+    - ticket_metrics.min_requester_wait_time
+    fill_fields:
+    - overview_tickets.created_date
+    sorts:
+    - overview_tickets.created_date desc
     limit: 500
     column_limit: 50
     stacking: ''
@@ -438,3 +485,7 @@
     show_silhouette: false
     totals_color: "#808080"
     series_types: {}
+    row: 29
+    col: 6
+    width: 12
+    height: 7

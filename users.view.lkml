@@ -1,4 +1,4 @@
-view: zd_users {
+view: users {
   sql_table_name: public.zd_users ;;
 
   dimension: id {
