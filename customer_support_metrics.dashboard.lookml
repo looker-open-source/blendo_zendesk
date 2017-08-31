@@ -45,8 +45,8 @@
     col: 0
     width: 6
     height: 5
-  - name: Closed Tickets Copy
-    title: Closed Tickets Copy
+  - name: Closed Tickets
+    title: Closed Tickets
     model: blendo_zendesk
     explore: overview_tickets
     type: single_value
@@ -88,8 +88,8 @@
     col: 6
     width: 6
     height: 5
-  - name: New Tickets Copy 5
-    title: New Tickets Copy 5
+  - name: New Tickets
+    title: New Tickets
     model: blendo_zendesk
     explore: overview_tickets
     type: single_value
@@ -131,8 +131,8 @@
     col: 12
     width: 6
     height: 5
-  - name: Open Tickets Copy 2
-    title: Open Tickets Copy 2
+  - name: Open Tickets
+    title: Open Tickets
     model: blendo_zendesk
     explore: overview_tickets
     type: single_value
